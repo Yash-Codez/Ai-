@@ -3,11 +3,9 @@ import {
   Bot, 
   Zap, 
   BarChart3, 
-  Video, 
   CheckCircle2, 
   ArrowRight, 
   Users, 
-  Database, 
   MessageSquare, 
   Search, 
   Cpu, 
@@ -16,76 +14,76 @@ import {
   Twitter,
   Github,
   Mail,
-  ChevronRight
+  Phone,
+  MessageCircle
 } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import Scene3D from "./Scene3D";
 
 const Navbar = () => (
   <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-bg-dark/80 backdrop-blur-md">
     <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <div className="flex items-center gap-2">
+      <Link to="/" className="flex items-center gap-2">
         <div className="w-8 h-8 bg-brand-primary rounded-lg flex items-center justify-center">
           <Cpu className="w-5 h-5 text-white" />
         </div>
         <span className="font-display font-bold text-xl tracking-tight text-white">AI Innovator7</span>
-      </div>
+      </Link>
       <div className="hidden md:flex items-center gap-8">
-        {["Services", "Process", "Case Studies", "Testimonials"].map((item) => (
-          <a key={item} href={`#${item.toLowerCase().replace(" ", "-")}`} className="text-sm font-medium text-gray-400 hover:text-white transition-colors">
-            {item}
-          </a>
-        ))}
+        <Link to="/" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Home</Link>
+        <Link to="/services" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Services</Link>
+        <Link to="/about" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">About</Link>
+        <Link to="/contact" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Contact</Link>
       </div>
-      <button className="bg-white text-black px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-gray-200 transition-colors">
-        Book a Call
-      </button>
+      <Link to="/contact" className="bg-brand-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-brand-primary/90 transition-colors">
+        Book Free Consultation
+      </Link>
     </div>
   </nav>
 );
 
 const Hero = () => (
-  <section className="relative pt-40 pb-24 px-6 overflow-hidden glow-mesh">
+  <section className="relative pt-48 pb-32 px-6 overflow-hidden">
     <div className="max-w-7xl mx-auto text-center relative z-10">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <span className="inline-block px-4 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-bold uppercase tracking-wider mb-6">
-          The Future of Business Efficiency
-        </span>
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-8 leading-[1.1] gradient-text">
-          We Don’t Sell AI. <br />
-          <span className="brand-gradient-text">We Build Systems That Replace Work.</span>
+        <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-bold mb-10 leading-[1.05] gradient-text tracking-tighter">
+          We Build AI Agents That <br />
+          <span className="brand-gradient-text">Replace 70% of Your Work</span>
         </h1>
-        <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed">
-          AI Innovator7 helps businesses automate operations, deploy AI agents, and scale faster with intelligent systems.
+        <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-14 leading-relaxed font-medium">
+          AI Innovator7 helps businesses automate operations and scale faster using intelligent systems.
         </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button className="w-full sm:w-auto bg-brand-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-brand-primary/90 transition-all flex items-center justify-center gap-2 group shadow-lg shadow-brand-primary/20">
-            Book a Call <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
-          <button className="w-full sm:w-auto bg-white/5 border border-white/10 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/10 transition-all">
-            See How It Works
-          </button>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+          <Link to="/contact" className="w-full sm:w-auto bg-brand-primary text-white px-10 py-5 rounded-full text-xl font-bold hover:bg-brand-primary/90 transition-all flex items-center justify-center gap-3 group shadow-2xl shadow-brand-primary/30 hover:scale-105 active:scale-95">
+            Book Free Consultation <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+          </Link>
+          <a href="https://wa.me/918957821289" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto bg-white/5 border border-white/10 text-white px-10 py-5 rounded-full text-xl font-bold hover:bg-white/10 transition-all flex items-center justify-center gap-3 hover:scale-105 active:scale-95">
+            <MessageCircle className="w-6 h-6 text-green-400" /> Chat on WhatsApp
+          </a>
         </div>
       </motion.div>
 
       <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+        className="mt-32 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto"
       >
         {[
-          { icon: <Zap className="w-5 h-5 text-red-400" />, text: "AI tools not being used" },
-          { icon: <TrendingUp className="w-5 h-5 text-orange-400" />, text: "No ROI from automation" },
-          { icon: <Users className="w-5 h-5 text-blue-400" />, text: "Teams wasting time on repetitive work" }
+          { icon: <Zap className="w-6 h-6 text-red-400" />, text: "Wasting time on repetitive work" },
+          { icon: <TrendingUp className="w-6 h-6 text-orange-400" />, text: "No ROI from AI tools" },
+          { icon: <Users className="w-6 h-6 text-blue-400" />, text: "Manual operations slowing growth" }
         ].map((item, i) => (
-          <div key={i} className="glass-card p-6 rounded-2xl flex items-center gap-4 text-left border-white/10">
-            <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0">
+          <div key={i} className="glass-card p-8 rounded-3xl flex flex-col items-center gap-6 text-center border-white/10 hover:border-white/20 transition-all hover:translate-y-[-8px] group">
+            <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center flex-shrink-0 group-hover:bg-white/10 transition-colors">
               {item.icon}
             </div>
-            <p className="text-sm font-medium text-gray-300">{item.text}</p>
+            <p className="text-lg font-semibold text-gray-300">{item.text}</p>
           </div>
         ))}
       </motion.div>
@@ -94,71 +92,24 @@ const Hero = () => (
 );
 
 const Trust = () => (
-  <section className="py-20 border-y border-white/5 bg-bg-dark/50">
+  <section id="about" className="py-24 border-y border-white/5 bg-bg-dark/30 backdrop-blur-sm">
     <div className="max-w-7xl mx-auto px-6">
-      <p className="text-center text-sm font-semibold text-gray-500 uppercase tracking-widest mb-12">
-        Trusted by Industry Leaders
-      </p>
-      <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
-        {["TECHCORP", "QUANTUM", "NEXUS", "APEX", "VELOCITY"].map((logo) => (
-          <span key={logo} className="text-2xl font-display font-black tracking-tighter text-white">{logo}</span>
-        ))}
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-24 text-center">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-16 text-center">
         {[
           { label: "AI Systems Built", value: "50+" },
           { label: "Clients Served", value: "100+" },
-          { label: "Automation Tasks Completed", value: "1M+" }
+          { label: "Tasks Automated", value: "1M+" }
         ].map((stat, i) => (
-          <div key={i}>
-            <h3 className="text-5xl font-display font-bold text-white mb-2">{stat.value}</h3>
-            <p className="text-gray-500 font-medium">{stat.label}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-const Process = () => (
-  <section id="process" className="py-32 px-6">
-    <div className="max-w-7xl mx-auto">
-      <div className="text-center mb-20">
-        <h2 className="text-4xl md:text-5xl mb-6">How We Turn AI Into Results</h2>
-        <p className="text-gray-400 max-w-2xl mx-auto">Our structured framework ensures your AI implementation is strategic, scalable, and delivers measurable ROI.</p>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-        <div className="hidden md:block absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-y-1/2 z-0" />
-        {[
-          { 
-            step: "01", 
-            title: "Identify", 
-            desc: "We analyze your business workflows and find high-impact AI opportunities.",
-            icon: <Search className="w-6 h-6 text-brand-primary" />
-          },
-          { 
-            step: "02", 
-            title: "Build", 
-            desc: "We develop custom AI agents, automation systems, and workflows tailored to your business.",
-            icon: <Cpu className="w-6 h-6 text-brand-secondary" />
-          },
-          { 
-            step: "03", 
-            title: "Scale", 
-            desc: "We deploy, optimize, and train your team so AI becomes part of daily operations.",
-            icon: <TrendingUp className="w-6 h-6 text-emerald-400" />
-          }
-        ].map((item, i) => (
-          <div key={i} className="glass-card p-10 rounded-3xl relative z-10 hover:border-white/20 transition-all group">
-            <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-              {item.icon}
-            </div>
-            <span className="text-xs font-bold text-brand-primary mb-4 block tracking-widest uppercase">Step {item.step}</span>
-            <h3 className="text-2xl mb-4">{item.title}</h3>
-            <p className="text-gray-400 leading-relaxed">{item.desc}</p>
-          </div>
+          <motion.div 
+            key={i}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.2 }}
+          >
+            <h3 className="text-6xl font-display font-bold text-white mb-3 tracking-tighter">{stat.value}</h3>
+            <p className="text-gray-500 font-bold uppercase tracking-widest text-sm">{stat.label}</p>
+          </motion.div>
         ))}
       </div>
     </div>
@@ -166,55 +117,99 @@ const Process = () => (
 );
 
 const Services = () => (
-  <section id="services" className="py-32 px-6 bg-white/[0.02]">
+  <section id="services" className="py-40 px-6 relative">
     <div className="max-w-7xl mx-auto">
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
-        <div className="max-w-2xl">
-          <h2 className="text-4xl md:text-5xl mb-6">Our Expertise</h2>
-          <p className="text-gray-400">Comprehensive AI solutions designed to transform every aspect of your business operations.</p>
-        </div>
-        <button className="text-brand-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
-          View All Services <ChevronRight className="w-5 h-5" />
-        </button>
+      <div className="text-center mb-24">
+        <h2 className="text-5xl md:text-6xl mb-8 font-display font-bold tracking-tight">Our Services</h2>
+        <p className="text-xl text-gray-400 max-w-2xl mx-auto font-medium">Specialized AI solutions to help your business scale faster and smarter.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {[
           {
             title: "AI Agents Development",
-            icon: <Bot className="w-6 h-6" />,
-            features: ["Custom GPT agents", "Workflow automation agents", "Lead generation bots"]
+            icon: <Bot className="w-8 h-8" />,
+            description: "Custom AI agents to automate repetitive business tasks and reduce manual work"
           },
           {
             title: "AI Automation Systems",
-            icon: <Zap className="w-6 h-6" />,
-            features: ["CRM automation", "WhatsApp / chatbot automation", "Business process automation"]
+            icon: <Zap className="w-8 h-8" />,
+            description: "Automate workflows, CRM, and operations to save time and increase efficiency"
+          },
+          {
+            title: "AI Chatbots",
+            icon: <MessageSquare className="w-8 h-8" />,
+            description: "24/7 customer support bots to handle queries and increase conversions"
           },
           {
             title: "AI Consulting",
-            icon: <BarChart3 className="w-6 h-6" />,
-            features: ["AI strategy", "Use case identification", "ROI planning"]
-          },
-          {
-            title: "AI Content Creation",
-            icon: <Video className="w-6 h-6" />,
-            features: ["AI video generation", "Social media automation", "Content pipelines"]
+            icon: <BarChart3 className="w-8 h-8" />,
+            description: "Strategy and implementation to identify high-impact AI opportunities"
           }
         ].map((service, i) => (
-          <div key={i} className="glass-card p-8 rounded-3xl hover:bg-white/[0.04] transition-all">
-            <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center mb-6 text-brand-primary">
+          <motion.div 
+            key={i} 
+            whileHover={{ y: -10, scale: 1.02 }}
+            className="glass-card p-10 rounded-[2.5rem] border-white/10 hover:border-brand-primary/30 transition-all shadow-2xl hover:shadow-brand-primary/10"
+          >
+            <div className="w-16 h-16 rounded-2xl bg-brand-primary/10 flex items-center justify-center mb-8 text-brand-primary shadow-inner">
               {service.icon}
             </div>
-            <h3 className="text-xl mb-6">{service.title}</h3>
-            <ul className="space-y-4">
-              {service.features.map((feature, j) => (
-                <li key={j} className="flex items-start gap-3 text-sm text-gray-400">
-                  <CheckCircle2 className="w-4 h-4 text-brand-primary mt-0.5 flex-shrink-0" />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-          </div>
+            <h3 className="text-2xl mb-6 font-display font-bold tracking-tight">{service.title}</h3>
+            <p className="text-gray-400 leading-relaxed font-medium">
+              {service.description}
+            </p>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Process = () => (
+  <section id="process" className="py-40 px-6 bg-white/[0.01]">
+    <div className="max-w-7xl mx-auto">
+      <div className="text-center mb-24">
+        <h2 className="text-5xl md:text-6xl mb-8 font-display font-bold tracking-tight">How We Deliver Results</h2>
+        <p className="text-xl text-gray-400 max-w-2xl mx-auto font-medium">Our structured approach ensures seamless AI integration and maximum ROI.</p>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+        <div className="hidden md:block absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-primary/20 to-transparent -translate-y-1/2 z-0" />
+        {[
+          { 
+            step: "01", 
+            title: "Identify Opportunities", 
+            desc: "We analyze your business to find the best automation use cases.",
+            icon: <Search className="w-8 h-8 text-brand-primary" />
+          },
+          { 
+            step: "02", 
+            title: "Build AI Systems", 
+            desc: "We develop and test custom AI solutions tailored to your needs.",
+            icon: <Cpu className="w-8 h-8 text-brand-secondary" />
+          },
+          { 
+            step: "03", 
+            title: "Deploy & Scale", 
+            desc: "We launch the systems and optimize them for continuous growth.",
+            icon: <TrendingUp className="w-8 h-8 text-emerald-400" />
+          }
+        ].map((item, i) => (
+          <motion.div 
+            key={i} 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="glass-card p-12 rounded-[3rem] relative z-10 hover:border-white/20 transition-all group text-center shadow-2xl"
+          >
+            <div className="w-20 h-20 rounded-3xl bg-white/5 flex items-center justify-center mb-10 mx-auto group-hover:scale-110 transition-transform shadow-xl">
+              {item.icon}
+            </div>
+            <span className="text-sm font-black text-brand-primary mb-6 block tracking-[0.2em] uppercase">Step {item.step}</span>
+            <h3 className="text-3xl mb-6 font-display font-bold tracking-tight">{item.title}</h3>
+            <p className="text-gray-400 leading-relaxed text-lg font-medium">{item.desc}</p>
+          </motion.div>
         ))}
       </div>
     </div>
@@ -222,50 +217,40 @@ const Services = () => (
 );
 
 const CaseStudies = () => (
-  <section id="case-studies" className="py-32 px-6">
+  <section id="case-studies" className="py-40 px-6">
     <div className="max-w-7xl mx-auto">
-      <div className="text-center mb-20">
-        <h2 className="text-4xl md:text-5xl mb-6">Real Impact, Real Results</h2>
-        <p className="text-gray-400 max-w-2xl mx-auto">See how we've helped businesses across industries unlock new levels of efficiency with custom AI systems.</p>
+      <div className="text-center mb-24">
+        <h2 className="text-5xl md:text-6xl mb-8 font-display font-bold tracking-tight">Case Studies</h2>
+        <p className="text-xl text-gray-400 max-w-2xl mx-auto font-medium">Proven results from our AI automation implementations.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         {[
           {
-            title: "Customer Support Revolution",
+            title: "Customer Support",
             result: "Automated 80% of customer support using AI chatbot",
-            tag: "Customer Service",
-            image: "https://picsum.photos/seed/support/800/600"
+            icon: <MessageSquare className="w-10 h-10 text-brand-primary" />
           },
           {
-            title: "Operational Excellence",
-            result: "Saved 40+ hours/week using workflow automation",
-            tag: "Operations",
-            image: "https://picsum.photos/seed/ops/800/600"
+            title: "Operations",
+            result: "Saved 40+ hours per week through workflow automation",
+            icon: <Zap className="w-10 h-10 text-brand-secondary" />
           },
           {
-            title: "Sales Growth Engine",
-            result: "Increased lead conversion by 3x with AI agents",
-            tag: "Sales & Marketing",
-            image: "https://picsum.photos/seed/sales/800/600"
+            title: "Lead Generation",
+            result: "Increased lead conversion by 3x using AI agents",
+            icon: <TrendingUp className="w-10 h-10 text-emerald-400" />
           }
         ].map((study, i) => (
-          <div key={i} className="group cursor-pointer">
-            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden mb-6">
-              <img 
-                src={study.image} 
-                alt={study.title} 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-xs font-bold text-white">
-                {study.tag}
-              </span>
-            </div>
-            <h3 className="text-2xl mb-3 group-hover:text-brand-primary transition-colors">{study.title}</h3>
-            <p className="text-gray-400 font-medium">{study.result}</p>
-          </div>
+          <motion.div 
+            key={i} 
+            whileHover={{ scale: 1.05 }}
+            className="glass-card p-12 rounded-[3rem] text-center hover:bg-white/[0.04] transition-all shadow-2xl border-white/10"
+          >
+            <div className="flex justify-center mb-10 drop-shadow-[0_0_15px_rgba(59,130,246,0.3)]">{study.icon}</div>
+            <h3 className="text-2xl mb-6 font-display font-bold tracking-tight">{study.title}</h3>
+            <p className="text-3xl font-black text-white tracking-tight leading-tight">{study.result}</p>
+          </motion.div>
         ))}
       </div>
     </div>
@@ -273,51 +258,52 @@ const CaseStudies = () => (
 );
 
 const Testimonials = () => (
-  <section id="testimonials" className="py-32 px-6 bg-white/[0.02]">
+  <section id="testimonials" className="py-40 px-6 bg-white/[0.01]">
     <div className="max-w-7xl mx-auto">
-      <div className="text-center mb-20">
-        <h2 className="text-4xl md:text-5xl mb-6">What Our Clients Say</h2>
-        <p className="text-gray-400 max-w-2xl mx-auto">Don't just take our word for it. Here's how AI Innovator7 is changing the game for business leaders.</p>
+      <div className="text-center mb-24">
+        <h2 className="text-5xl md:text-6xl mb-8 font-display font-bold tracking-tight">Testimonials</h2>
+        <p className="text-xl text-gray-400 max-w-2xl mx-auto font-medium">What our clients say about AI Innovator7.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         {[
           {
-            name: "Sarah Jenkins",
-            role: "COO at TechFlow",
-            text: "AI Innovator7 didn't just give us tools; they gave us a new way of working. Our team is now focused on strategy while AI handles the rest.",
-            image: "https://i.pravatar.cc/150?u=sarah"
+            name: "Ecoshack",
+            role: "E-commerce Brand",
+            text: "AI Innovator7 automated our customer support and saved us hours every day.",
+            image: "https://i.pravatar.cc/150?u=ecoshack"
           },
           {
-            name: "Marcus Chen",
-            role: "Founder of ScaleUp",
-            text: "The ROI was evident within the first month. We've reduced our operational costs by 30% and improved our response times significantly.",
-            image: "https://i.pravatar.cc/150?u=marcus"
+            name: "Neha Verma",
+            role: "Marketing Agency",
+            text: "The AI automation system improved our workflow and increased productivity.",
+            image: "https://i.pravatar.cc/150?u=neha"
           },
           {
-            name: "Elena Rodriguez",
-            role: "Marketing Director",
-            text: "The AI content pipeline they built for us is incredible. We're producing 5x more content with the same team size. Highly recommended!",
-            image: "https://i.pravatar.cc/150?u=elena"
+            name: "Amit Patel",
+            role: "Startup Founder",
+            text: "The AI agent helped us generate and convert more leads efficiently.",
+            image: "https://i.pravatar.cc/150?u=amit"
           }
         ].map((t, i) => (
-          <div key={i} className="glass-card p-10 rounded-3xl flex flex-col justify-between">
+          <motion.div 
+            key={i} 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="glass-card p-12 rounded-[3rem] flex flex-col justify-between shadow-2xl border-white/10"
+          >
             <div>
-              <div className="flex gap-1 mb-6">
-                {[...Array(5)].map((_, i) => (
-                  <Zap key={i} className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                ))}
-              </div>
-              <p className="text-lg text-gray-300 italic mb-8 leading-relaxed">"{t.text}"</p>
+              <p className="text-xl text-gray-300 italic mb-12 leading-relaxed font-medium">"{t.text}"</p>
             </div>
-            <div className="flex items-center gap-4">
-              <img src={t.image} alt={t.name} className="w-12 h-12 rounded-full border border-white/10" referrerPolicy="no-referrer" />
+            <div className="flex items-center gap-6">
+              <img src={t.image} alt={t.name} className="w-16 h-16 rounded-full border-2 border-brand-primary/30 p-1" referrerPolicy="no-referrer" />
               <div>
-                <h4 className="font-bold text-white">{t.name}</h4>
-                <p className="text-xs text-gray-500">{t.role}</p>
+                <h4 className="font-display font-bold text-xl text-white tracking-tight">{t.name}</h4>
+                <p className="text-sm text-gray-500 font-bold uppercase tracking-wider">{t.role}</p>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
@@ -325,92 +311,197 @@ const Testimonials = () => (
 );
 
 const FinalCTA = () => (
-  <section className="py-32 px-6 relative overflow-hidden">
-    <div className="absolute inset-0 glow-mesh opacity-50" />
-    <div className="max-w-4xl mx-auto text-center relative z-10">
-      <h2 className="text-4xl md:text-6xl mb-8">Stop Experimenting With AI. <br /><span className="brand-gradient-text">Start Getting Results.</span></h2>
-      <p className="text-xl text-gray-400 mb-12">Join 100+ forward-thinking companies that have already automated their future.</p>
-      <button className="bg-white text-black px-10 py-5 rounded-full text-xl font-bold hover:bg-gray-200 transition-all shadow-2xl shadow-white/10">
-        Book Your Free AI Consultation
-      </button>
+  <section className="py-48 px-6 relative overflow-hidden">
+    <div className="max-w-5xl mx-auto text-center relative z-10">
+      <motion.h2 
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        className="text-6xl md:text-8xl mb-12 font-display font-bold tracking-tighter leading-[1.1]"
+      >
+        Stop Doing Manual Work. <br /><span className="brand-gradient-text">Let AI Handle It.</span>
+      </motion.h2>
+      <Link to="/contact" className="inline-block bg-brand-primary text-white px-14 py-6 rounded-full text-2xl font-black hover:bg-brand-primary/90 transition-all shadow-[0_20px_50px_rgba(59,130,246,0.4)] hover:scale-105 active:scale-95">
+        Book Free Consultation
+      </Link>
     </div>
   </section>
 );
 
-const Footer = () => (
-  <footer className="py-20 px-6 border-t border-white/5 bg-bg-dark">
-    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
-      <div className="col-span-1 md:col-span-1">
-        <div className="flex items-center gap-2 mb-6">
-          <div className="w-8 h-8 bg-brand-primary rounded-lg flex items-center justify-center">
-            <Cpu className="w-5 h-5 text-white" />
+const Contact = () => {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+
+  return (
+    <section id="contact" className="py-40 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
+          <div>
+            <h2 className="text-5xl md:text-6xl mb-10 font-display font-bold tracking-tight">Contact Us</h2>
+            <p className="text-xl text-gray-400 mb-16 font-medium leading-relaxed">Ready to automate your business? Fill out the form or reach out directly.</p>
+            
+            <div className="space-y-10">
+              <a href="https://wa.me/918957821289" target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 text-gray-300 hover:text-green-400 transition-all group">
+                <div className="w-16 h-16 rounded-2xl bg-green-400/10 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                  <MessageCircle className="w-8 h-8 text-green-400" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500 font-bold uppercase tracking-widest mb-1">WhatsApp</p>
+                  <p className="text-2xl font-display font-bold text-white tracking-tight">+91 8957821289</p>
+                </div>
+              </a>
+
+              <div className="flex items-center gap-6 text-gray-300 group">
+                <div className="w-16 h-16 rounded-2xl bg-brand-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                  <Phone className="w-8 h-8 text-brand-primary" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500 font-bold uppercase tracking-widest mb-1">Phone</p>
+                  <p className="text-2xl font-display font-bold text-white tracking-tight">+91 8957821289</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-6 text-gray-300 group">
+                <div className="w-16 h-16 rounded-2xl bg-brand-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                  <Mail className="w-8 h-8 text-brand-primary" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500 font-bold uppercase tracking-widest mb-1">Email</p>
+                  <p className="text-2xl font-display font-bold text-white tracking-tight">theluckynsahu@gmail.com</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <span className="font-display font-bold text-xl tracking-tight text-white">AI Innovator7</span>
+
+          <div className="glass-card p-12 rounded-[3rem] shadow-2xl border-white/10">
+            <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+              <div>
+                <label className="block text-sm font-black text-gray-500 uppercase tracking-[0.2em] mb-4">Name</label>
+                <input 
+                  type="text" 
+                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-lg focus:outline-none focus:border-brand-primary transition-all font-medium"
+                  placeholder="Your Name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-black text-gray-500 uppercase tracking-[0.2em] mb-4">Email</label>
+                <input 
+                  type="email" 
+                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-lg focus:outline-none focus:border-brand-primary transition-all font-medium"
+                  placeholder="your@email.com"
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-black text-gray-500 uppercase tracking-[0.2em] mb-4">Message</label>
+                <textarea 
+                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-lg focus:outline-none focus:border-brand-primary transition-all h-40 font-medium"
+                  placeholder="How can we help you?"
+                  value={formData.message}
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                ></textarea>
+              </div>
+              <button className="w-full bg-brand-primary text-white py-6 rounded-2xl text-xl font-black hover:bg-brand-primary/90 transition-all shadow-xl shadow-brand-primary/20 hover:scale-[1.02] active:scale-[0.98]">
+                Send Message
+              </button>
+            </form>
+          </div>
         </div>
-        <p className="text-gray-500 text-sm leading-relaxed mb-8">
-          Building the intelligent systems of tomorrow, today. We help businesses scale through strategic AI automation.
+      </div>
+    </section>
+  );
+};
+
+const Footer = () => (
+  <footer className="py-24 px-6 border-t border-white/5 bg-bg-dark/80 backdrop-blur-md">
+    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-16 mb-24">
+      <div className="col-span-1 md:col-span-1">
+        <div className="flex items-center gap-3 mb-8">
+          <div className="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center shadow-lg">
+            <Cpu className="w-6 h-6 text-white" />
+          </div>
+          <span className="font-display font-bold text-2xl tracking-tight text-white">AI Innovator7</span>
+        </div>
+        <p className="text-gray-500 text-lg leading-relaxed mb-10 font-medium">
+          AI Automation Agency helping businesses save time and scale faster using intelligent systems.
         </p>
-        <div className="flex gap-4">
+        <div className="flex gap-5">
           {[Linkedin, Twitter, Github, Mail].map((Icon, i) => (
-            <a key={i} href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-primary/20 hover:text-brand-primary transition-all">
-              <Icon className="w-5 h-5" />
+            <a key={i} href="#" className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-brand-primary/20 hover:text-brand-primary transition-all shadow-md">
+              <Icon className="w-6 h-6" />
             </a>
           ))}
         </div>
       </div>
       
       <div>
-        <h4 className="font-bold mb-6">Services</h4>
-        <ul className="space-y-4 text-sm text-gray-500">
-          {["AI Agents", "Automation Systems", "AI Consulting", "Content Pipelines"].map((item) => (
-            <li key={item}><a href="#" className="hover:text-white transition-colors">{item}</a></li>
+        <h4 className="font-display font-bold text-xl mb-8 tracking-tight">Links</h4>
+        <ul className="space-y-5 text-lg text-gray-500 font-medium">
+          <li><a href="/" className="hover:text-white transition-colors">Home</a></li>
+          <li><a href="/services" className="hover:text-white transition-colors">Services</a></li>
+          <li><a href="/about" className="hover:text-white transition-colors">About</a></li>
+          <li><a href="/contact" className="hover:text-white transition-colors">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 className="font-display font-bold text-xl mb-8 tracking-tight">Services</h4>
+        <ul className="space-y-5 text-lg text-gray-500 font-medium">
+          {["AI Agents", "Automation Systems", "AI Chatbots", "AI Consulting"].map((item) => (
+            <li key={item}><a href="/services" className="hover:text-white transition-colors">{item}</a></li>
           ))}
         </ul>
       </div>
       
       <div>
-        <h4 className="font-bold mb-6">Company</h4>
-        <ul className="space-y-4 text-sm text-gray-500">
-          {["About Us", "Process", "Case Studies", "Testimonials", "Contact"].map((item) => (
-            <li key={item}><a href="#" className="hover:text-white transition-colors">{item}</a></li>
-          ))}
+        <h4 className="font-display font-bold text-xl mb-8 tracking-tight">Contact</h4>
+        <ul className="space-y-5 text-lg text-gray-500 font-medium">
+          <li>theluckynsahu@gmail.com</li>
+          <li>+91 8957821289</li>
+          <li>India</li>
         </ul>
-      </div>
-      
-      <div>
-        <h4 className="font-bold mb-6">Newsletter</h4>
-        <p className="text-sm text-gray-500 mb-4">Get the latest AI automation insights delivered to your inbox.</p>
-        <div className="flex gap-2">
-          <input type="email" placeholder="Email address" className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm w-full focus:outline-none focus:border-brand-primary transition-colors" />
-          <button className="bg-brand-primary p-2 rounded-lg hover:bg-brand-primary/80 transition-colors">
-            <ArrowRight className="w-5 h-5" />
-          </button>
-        </div>
       </div>
     </div>
     
-    <div className="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600 font-medium">
+    <div className="max-w-7xl mx-auto pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-gray-600 font-bold uppercase tracking-widest">
       <p>© 2026 AI Innovator7. All rights reserved.</p>
-      <div className="flex gap-8">
-        <a href="#" className="hover:text-white">Privacy Policy</a>
-        <a href="#" className="hover:text-white">Terms of Service</a>
+      <div className="flex gap-10">
+        <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
       </div>
     </div>
   </footer>
 );
 
 export default function LandingPage() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    if (pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      const elementId = pathname.substring(1);
+      const element = document.getElementById(elementId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [pathname]);
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-bg-dark text-white selection:bg-brand-primary/30">
+      <Scene3D />
       <Navbar />
-      <main>
+      <main className="relative z-10">
         <Hero />
         <Trust />
-        <Process />
         <Services />
+        <Process />
         <CaseStudies />
         <Testimonials />
         <FinalCTA />
+        <Contact />
       </main>
       <Footer />
     </div>
