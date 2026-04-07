@@ -32,11 +32,11 @@ function ParticleField() {
       <Points ref={ref} positions={sphere} stride={3} frustumCulled={false}>
         <PointMaterial
           transparent
-          color="#3b82f6"
+          color="#00FFFF"
           size={0.02}
           sizeAttenuation={true}
           depthWrite={false}
-          opacity={0.4}
+          opacity={0.3}
         />
       </Points>
     </group>
@@ -45,10 +45,12 @@ function ParticleField() {
 
 function FloatingShape({ color, position, speed = 1 }: { color: string, position: [number, number, number], speed?: number }) {
   const meshRef = useRef<THREE.Mesh>(null!);
+  const timeRef = useRef(0);
   
-  useFrame((state) => {
+  useFrame((state, delta) => {
     if (meshRef.current) {
-      const time = state.clock.getElapsedTime() * speed;
+      timeRef.current += delta * speed;
+      const time = timeRef.current;
       meshRef.current.position.y = position[1] + Math.sin(time) * 0.5;
       meshRef.current.rotation.x = time * 0.2;
       meshRef.current.rotation.y = time * 0.3;
@@ -59,7 +61,7 @@ function FloatingShape({ color, position, speed = 1 }: { color: string, position
     <Float speed={2} rotationIntensity={1} floatIntensity={2}>
       <mesh ref={meshRef} position={position}>
         <octahedronGeometry args={[1, 0]} />
-        <meshStandardMaterial color={color} wireframe transparent opacity={0.2} />
+        <meshStandardMaterial color={color} wireframe transparent opacity={0.15} />
       </mesh>
     </Float>
   );
@@ -67,19 +69,19 @@ function FloatingShape({ color, position, speed = 1 }: { color: string, position
 
 export default function Scene3D() {
   return (
-    <div className="fixed inset-0 -z-10 pointer-events-none opacity-60">
+    <div className="fixed inset-0 -z-10 pointer-events-none opacity-40">
       <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
         <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} intensity={1} />
-        <pointLight position={[-10, -10, -10]} color="#6366f1" intensity={0.5} />
+        <pointLight position={[10, 10, 10]} intensity={1} color="#00FFFF" />
+        <pointLight position={[-10, -10, -10]} color="#008080" intensity={0.5} />
         
         <ParticleField />
         
-        <FloatingShape color="#3b82f6" position={[-4, 2, -2]} speed={0.5} />
-        <FloatingShape color="#6366f1" position={[4, -2, -3]} speed={0.8} />
-        <FloatingShape color="#3b82f6" position={[2, 3, -5]} speed={0.3} />
+        <FloatingShape color="#00FFFF" position={[-4, 2, -2]} speed={0.5} />
+        <FloatingShape color="#008080" position={[4, -2, -3]} speed={0.8} />
+        <FloatingShape color="#00FFFF" position={[2, 3, -5]} speed={0.3} />
         
-        <fog attach="fog" args={["#0a0a0a", 5, 15]} />
+        <fog attach="fog" args={["#050505", 5, 15]} />
       </Canvas>
     </div>
   );
