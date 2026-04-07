@@ -14,30 +14,53 @@ const KDPAgents = () => {
     { label: "Layout Agent formatting PDF...", icon: <Layers className="w-5 h-5" /> }
   ];
 
-  const handleGenerate = (e: React.FormEvent) => {
+  const handleGenerate = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.title || !formData.email || !formData.mobile) return;
     
     setIsGenerating(true);
     setStep(0);
     
-    const interval = setInterval(() => {
-      setStep(prev => {
-        if (prev >= 2) {
-          clearInterval(interval);
-          setTimeout(() => {
-            setIsGenerating(false);
-            setShowSuccess(true);
-            // WhatsApp Redirect Logic
-            const message = `Hi AI Innovator7! I just generated a KDP book titled "${formData.title}". My email is ${formData.email} and mobile is ${formData.mobile}. I'd like to discuss the next steps!`;
-            const whatsappUrl = `https://wa.me/918957821289?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, "_blank");
-          }, 2000);
-          return 2;
-        }
-        return prev + 1;
+    // Slow down the UI loading so it matches the real backend
+    const mockUiInterval = setInterval(() => {
+      setStep(prev => prev < 2 ? prev + 1 : prev); 
+    }, 4000);
+
+    try {
+      // Connects directly to your live Render Backend
+      const response = await fetch('https://ai-innovator7-backend-1.onrender.com/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: formData.title,
+          email: formData.email,
+          phone: formData.mobile,
+          agent_count: 10
+        })
       });
-    }, 3000);
+
+      clearInterval(mockUiInterval);
+
+      if (response.ok) {
+        setStep(3); 
+        setIsGenerating(false);
+        setShowSuccess(true);
+        
+        const message = `Hi AI Innovator7! I just triggered an AI Agent Swarm for a KDP book titled "${formData.title}". My email is ${formData.email} and mobile is ${formData.mobile}. Let's discuss it!`;
+        const whatsappUrl = `https://wa.me/918957821289?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, "_blank");
+      } else {
+        alert("Server error. Please try again.");
+        setIsGenerating(false);
+        setStep(0);
+      }
+    } catch (err) {
+      clearInterval(mockUiInterval);
+      console.error("Connection failed:", err);
+      alert("Failed to connect to the backend.");
+      setIsGenerating(false);
+      setStep(0);
+    }
   };
 
   const pricing = [
