@@ -27,7 +27,7 @@ const KDPAgents = () => {
     }, 4000);
 
     try {
-      // Connects directly to your live Render Backend
+      // 1. Tell backend to start writing
       const response = await fetch('https://ai-innovator7-backend-1.onrender.com/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -39,17 +39,40 @@ const KDPAgents = () => {
         })
       });
 
-      clearInterval(mockUiInterval);
-
       if (response.ok) {
-        setStep(3); 
-        setIsGenerating(false);
-        setShowSuccess(true);
+        // 2. Secretly poll the server every 5 seconds to see when it finishes!
+        const formattedTitle = formData.title.trim().replace(/ /g, "_");
+        const downloadUrl = `https://ai-innovator7-backend-1.onrender.com/download/Book_${formattedTitle}.md`;
+
+        const pollInterval = window.setInterval(async () => {
+          try {
+            const check = await fetch(downloadUrl);
+            const textResponse = await check.text();
+            
+            // If the response hides the "error" message, the book is officially done!
+            if (!textResponse.includes('"error"')) {
+              clearInterval(pollInterval);
+              clearInterval(mockUiInterval);
+              
+              setStep(3); 
+              setIsGenerating(false);
+              setShowSuccess(true);
+              
+              // Download the file straight to their computer!
+              window.location.href = downloadUrl;
+
+              // Pop WhatsApp open so they can say thank you!
+              const message = `Hi AI Innovator7! My custom book "${formData.title}" just automatically downloaded from your site! I would love to learn more!`;
+              const whatsappUrl = `https://wa.me/918957821289?text=${encodeURIComponent(message)}`;
+              window.open(whatsappUrl, "_blank");
+            }
+          } catch (e) {
+            console.log("Waiting for AI Swarm to finish...");
+          }
+        }, 5000);
         
-        const message = `Hi AI Innovator7! I just triggered an AI Agent Swarm for a KDP book titled "${formData.title}". My email is ${formData.email} and mobile is ${formData.mobile}. Let's discuss it!`;
-        const whatsappUrl = `https://wa.me/918957821289?text=${encodeURIComponent(message)}`;
-        window.open(whatsappUrl, "_blank");
       } else {
+        clearInterval(mockUiInterval);
         alert("Server error. Please try again.");
         setIsGenerating(false);
         setStep(0);
@@ -164,12 +187,15 @@ const KDPAgents = () => {
                   <CheckCircle2 className="w-10 h-10 text-emerald-400" />
                 </div>
                 <h3 className="text-4xl font-display font-bold mb-6">Success!</h3>
-                <p className="text-xl text-gray-400 mb-10">Your KDP book interior has been generated. Redirecting you to WhatsApp to claim your free copy...</p>
+                <p className="text-xl text-gray-400 mb-10">Your KDP book interior has actively downloaded to your computer! Let's chat on WhatsApp about next steps.</p>
                 <button 
-                  onClick={() => setShowSuccess(false)}
+                  onClick={() => {
+                    setShowSuccess(false);
+                    setFormData({ title: "", email: "", mobile: "" });
+                  }}
                   className="bg-white/5 border border-white/10 text-white px-10 py-4 rounded-full text-lg font-bold hover:bg-white/10 transition-all"
                 >
-                  Generate Another
+                  Generate Another Book
                 </button>
               </motion.div>
             )}
