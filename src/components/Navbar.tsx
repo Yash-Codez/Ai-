@@ -20,7 +20,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-8">
           <Link to="/" className="text-sm font-medium text-gray-400 hover:text-brand-primary transition-colors">Home</Link>
           <Link to="/services" className="text-sm font-medium text-gray-400 hover:text-brand-primary transition-colors">Services</Link>
-          <Link to="/kdp-agents" className="text-sm font-medium text-gray-400 hover:text-brand-primary transition-colors">KDP Agents</Link>
+          <Link to="/portfolio" className="text-sm font-medium text-gray-400 hover:text-brand-primary transition-colors">Portfolio</Link>
           <Link to="/about" className="text-sm font-medium text-gray-400 hover:text-brand-primary transition-colors">About</Link>
           <Link to="/contact" className="text-sm font-medium text-gray-400 hover:text-brand-primary transition-colors">Contact</Link>
           <Link to="/contact" className="bg-brand-primary text-black px-6 py-3 rounded-full text-sm font-bold hover:bg-white transition-all shadow-[0_0_20px_rgba(0,255,255,0.3)]">
@@ -48,7 +48,7 @@ const Navbar = () => {
             >
               <Link to="/" onClick={() => setIsOpen(false)} className="text-3xl font-display font-bold hover:text-brand-primary transition-colors">Home</Link>
               <Link to="/services" onClick={() => setIsOpen(false)} className="text-3xl font-display font-bold hover:text-brand-primary transition-colors">Services</Link>
-              <Link to="/kdp-agents" onClick={() => setIsOpen(false)} className="text-3xl font-display font-bold hover:text-brand-primary transition-colors">KDP Agents</Link>
+              <Link to="/portfolio" onClick={() => setIsOpen(false)} className="text-3xl font-display font-bold hover:text-brand-primary transition-colors">Portfolio</Link>
               <Link to="/about" onClick={() => setIsOpen(false)} className="text-3xl font-display font-bold hover:text-brand-primary transition-colors">About</Link>
               <Link to="/contact" onClick={() => setIsOpen(false)} className="text-3xl font-display font-bold hover:text-brand-primary transition-colors">Contact</Link>
               <Link to="/contact" onClick={() => setIsOpen(false)} className="mt-4 bg-brand-primary text-black px-10 py-5 rounded-full text-xl font-black shadow-[0_0_30px_rgba(0,255,255,0.4)]">

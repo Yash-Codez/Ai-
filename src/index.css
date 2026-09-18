@@ -5,10 +5,10 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
   
-  --color-brand-primary: #00FFFF;
-  --color-brand-secondary: #008080;
-  --color-bg-dark: #050505;
-  --color-bg-card: #0a0a0a;
+  --color-brand-primary: #3B82F6; /* Electric Blue */
+  --color-brand-secondary: #8B5CF6; /* Purple */
+  --color-bg-dark: #0F172A; /* Slate 900 */
+  --color-bg-card: #1E293B; /* Slate 800 */
 }
 
 @layer base {
@@ -22,8 +22,8 @@
 }
 
 .glow-mesh {
-  background: radial-gradient(circle at 50% -20%, rgba(0, 255, 255, 0.15), transparent 70%),
-              radial-gradient(circle at 0% 0%, rgba(0, 128, 128, 0.05), transparent 40%);
+  background: radial-gradient(circle at 50% -20%, rgba(59, 130, 246, 0.15), transparent 70%),
+              radial-gradient(circle at 0% 0%, rgba(139, 92, 246, 0.05), transparent 40%);
 }
 
 .glass-card {

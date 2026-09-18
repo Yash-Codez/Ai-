@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Bot, Zap, Cpu, Layers, CheckCircle2 } from "lucide-react";
+import { Bot, Zap, Cpu, Layers, CheckCircle2, MessageCircle } from "lucide-react";
 
 const Services = () => {
   const services = [
@@ -10,10 +10,10 @@ const Services = () => {
       features: ["Self-correcting loops", "Multi-agent collaboration", "24/7 autonomous operation"]
     },
     {
-      title: "KDP Automation",
+      title: "WhatsApp AI Chatbot",
       icon: <Layers className="w-8 h-8" />,
-      desc: "End-to-end automation for Amazon KDP, from keyword research to interior design.",
-      features: ["Automated niche research", "AI-generated interiors", "Bulk upload systems"]
+      desc: "Fully automated appointment booking system integrated directly into WhatsApp.",
+      features: ["24/7 Appointment Booking", "Natural language processing", "Calendar sync integration"]
     },
     {
       title: "CRM Integration",
