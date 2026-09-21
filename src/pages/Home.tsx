@@ -103,19 +103,15 @@ const Home = () => {
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px] opacity-20"></div>
 
           <FadeUpReveal className="relative z-10 max-w-6xl mx-auto flex flex-col items-center gap-12 md:gap-16">
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-light text-gray-300 tracking-tight">
-              That's why we built <span className="text-emerald-400 font-medium">AI Innovator7.</span>
-            </h2>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-light text-gray-300 tracking-tight max-w-6xl">
+            That's why we built <span className="text-emerald-400 font-medium">AI Innovator7.</span> <span className="text-white font-bold ml-2">AI that actually moves the needle.</span>
+          </h2>
+          
+          <p className="text-lg md:text-xl text-gray-300 max-w-4xl leading-relaxed font-light">
+            AI Innovator7 defines what's worth building, builds it for you, then trains your people to make it stick.
+          </p>
             
-            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-              AI that actually moves the needle.
-            </h3>
-            
-            <p className="text-xl md:text-3xl text-gray-300 max-w-4xl leading-relaxed font-light">
-              AI Innovator7 defines what's worth building, builds it for you, then trains your people to make it stick.
-            </p>
-            
-            <p className="text-2xl md:text-4xl text-gray-300 mt-4 font-light">
+            <p className="text-xl md:text-2xl text-gray-300 mt-4 font-light">
               Stop paying to experiment. <span className="text-white font-bold">Start paying for results.</span>
             </p>
             
