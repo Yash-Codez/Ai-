@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Zap, ArrowRight, Bot, Cpu, BarChart3, Users } from "lucide-react";
+import { Zap, ArrowRight, Bot, Cpu, BarChart3, Users, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import VideoShowcase from "../components/VideoShowcase";
 import TestimonialSlider from "../components/TestimonialSlider";
@@ -94,6 +94,37 @@ const Home = () => {
           className: "text-3xl md:text-5xl lg:text-6xl text-white"
         }
       ]} />
+
+      {/* Why We Built It Section (Sticky) */}
+      <section className="relative h-[200vh] w-full bg-black border-t border-white/5">
+        <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col items-center justify-center text-center px-6">
+          {/* Subtle green gradient and grid like the image */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px] opacity-20"></div>
+
+          <FadeUpReveal className="relative z-10 max-w-6xl mx-auto flex flex-col items-center gap-12 md:gap-16">
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-light text-gray-300 tracking-tight">
+              That's why we built <span className="text-emerald-400 font-medium">AI Innovator7.</span>
+            </h2>
+            
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+              AI that actually moves the needle.
+            </h3>
+            
+            <p className="text-xl md:text-3xl text-gray-300 max-w-4xl leading-relaxed font-light">
+              AI Innovator7 defines what's worth building, builds it for you, then trains your people to make it stick.
+            </p>
+            
+            <p className="text-2xl md:text-4xl text-gray-300 mt-4 font-light">
+              Stop paying to experiment. <span className="text-white font-bold">Start paying for results.</span>
+            </p>
+            
+            <Link to="/contact" className="mt-12 bg-white text-black font-bold uppercase tracking-[0.2em] text-sm md:text-base px-10 py-5 hover:bg-gray-200 transition-colors flex items-center gap-3 rounded shadow-[0_0_40px_rgba(255,255,255,0.15)] hover:shadow-[0_0_60px_rgba(255,255,255,0.3)] hover:scale-105 duration-300">
+              GET IN TOUCH <ChevronRight className="w-5 h-5" />
+            </Link>
+          </FadeUpReveal>
+        </div>
+      </section>
 
       {/* Trusted By Banner */}
       <section className="py-12 border-y border-white/5 bg-black/20">
