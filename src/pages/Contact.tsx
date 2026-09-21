@@ -39,7 +39,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="text-xs font-black text-gray-500 uppercase tracking-widest mb-1">Email Us</div>
-                  <div className="text-xl font-bold">hello@aiinnovator7.com</div>
+                  <div className="text-xl font-bold">aiinnovator7.in@gmail.com</div>
                 </div>
               </div>
               <div className="flex items-center gap-6">
@@ -48,7 +48,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="text-xs font-black text-gray-500 uppercase tracking-widest mb-1">Call Us</div>
-                  <div className="text-xl font-bold">+91 89578 21289</div>
+                  <div className="text-xl font-bold">8957821289</div>
                 </div>
               </div>
               <div className="flex items-center gap-6">

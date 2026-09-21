@@ -5,25 +5,25 @@ const portfolioItems = [
   {
     title: "WhatsApp AI Appointment Bot",
     description: "Fully automated booking system directly within WhatsApp.",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+    videoUrl: "/appointment bot.mp4",
     roi: "+200% Booking Rate",
   },
   {
     title: "AI Chatbot for E-commerce",
     description: "Automated customer support saving 40 hours a week.",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+    videoUrl: "/chatbot.mp4",
     roi: "-40 Hrs/Wk Support",
   },
   {
     title: "n8n Lead Generator Workflow",
     description: "Automated lead scraping, qualification, and CRM entry using n8n.",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+    videoUrl: "/lead agent.mp4",
     roi: "+35% Lead Conversion",
   },
   {
     title: "AI Product Video Generator",
     description: "Automatically pulls products from your e-commerce site and generates high-converting AI videos.",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+    videoUrl: "/ai video generator.mp4",
     roi: "-90% Content Cost",
   }
 ];

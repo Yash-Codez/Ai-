@@ -4,30 +4,32 @@ import { Link } from "react-router-dom";
 import VideoShowcase from "../components/VideoShowcase";
 import TestimonialSlider from "../components/TestimonialSlider";
 import InteractiveAvatar from "../components/InteractiveAvatar";
+import ScrollTextReveal from "../components/ScrollTextReveal";
+import FadeUpReveal from "../components/FadeUpReveal";
 
 const previewPortfolioItems = [
   {
     title: "WhatsApp AI Appointment Bot",
     description: "Fully automated booking system directly within WhatsApp.",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+    videoUrl: "/appointment bot.mp4",
     roi: "+200% Booking Rate",
   },
   {
     title: "AI Chatbot for E-commerce",
     description: "Automated customer support saving 40 hours a week.",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+    videoUrl: "/chatbot.mp4",
     roi: "-40 Hrs/Wk Support",
   },
   {
     title: "n8n Lead Generator Workflow",
     description: "Automated lead scraping, qualification, and CRM entry using n8n.",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+    videoUrl: "/lead agent.mp4",
     roi: "+35% Lead Conversion",
   },
   {
     title: "AI Product Video Generator",
     description: "Automatically pulls products from your e-commerce site and generates high-converting AI videos.",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+    videoUrl: "/ai video generator.mp4",
     roi: "-90% Content Cost",
   }
 ];
@@ -54,11 +56,11 @@ const Home = () => {
               <Zap className="w-4 h-4" /> Enterprise AI Solutions
             </div>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight tracking-tight">
-              Scale Your Operations <br className="hidden md:block" />
-              with <span className="brand-gradient-text">Intelligent Automation</span>
+              AI That Actually <br className="hidden md:block" />
+              <span className="brand-gradient-text">Moves The Needle</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-400 max-w-xl mb-12 leading-relaxed">
-              We deploy custom AI systems that eliminate manual workflows, reduce overhead, and drive measurable revenue growth for your enterprise.
+              We define what's worth building, build it for you, then train your people to make it stick. Stop paying to experiment. Start paying for results.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4">
               <Link to="/contact" className="w-full sm:w-auto bg-brand-primary text-black px-8 py-4 rounded-full text-lg font-black hover:bg-white transition-all shadow-[0_0_30px_rgba(0,255,255,0.3)] min-h-[56px] flex items-center justify-center">
@@ -80,6 +82,18 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Scroll Reveal Text */}
+      <ScrollTextReveal blocks={[
+        {
+          text: "You bought the AI tools. Read the case studies. Attended the webinars.",
+          className: "text-3xl md:text-5xl lg:text-6xl text-white"
+        },
+        {
+          text: "But months later, the tools sit unused. The pilots never scaled. And nobody can explain what ROI actually looks like.",
+          className: "text-3xl md:text-5xl lg:text-6xl text-white"
+        }
+      ]} />
 
       {/* Trusted By Banner */}
       <section className="py-12 border-y border-white/5 bg-black/20">
@@ -104,18 +118,53 @@ const Home = () => {
               { label: "Hours Saved Weekly", value: "40,000+" },
               { label: "Enterprise Clients", value: "150+" }
             ].map((stat, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.2 }}
-              >
+              <FadeUpReveal key={i} delay={i * 0.2}>
                 <h3 className="text-6xl font-display font-bold text-white mb-3 tracking-tighter">{stat.value}</h3>
                 <p className="text-gray-500 font-bold uppercase tracking-widest text-sm">{stat.label}</p>
-              </motion.div>
+              </FadeUpReveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* 3-Step Process */}
+      <section className="py-24 px-6 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">How We <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-purple-500">Transform</span> Your Business</h2>
+          <p className="text-xl text-gray-400">A proven, linear process from audit to adoption.</p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              step: "01",
+              title: "Identify",
+              desc: "We start by understanding how your team actually works - where time is lost, what slows things down, and finding the 5% of opportunities worth building."
+            },
+            {
+              step: "02",
+              title: "Develop",
+              desc: "Once we know what matters, we move quickly. We develop solutions that fit seamlessly into your existing systems, working exactly as they should from day one."
+            },
+            {
+              step: "03",
+              title: "Adopt",
+              desc: "Then we make it real. We work side by side with your teams - training and fine-tuning. By the time we step back, it's just how work gets done."
+            }
+          ].map((s, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.2 }}
+              className="glass-card p-10 rounded-3xl border-white/10 relative overflow-hidden group hover:border-brand-primary/30 transition-all"
+            >
+              <div className="text-8xl font-bold font-display text-white/5 absolute -top-4 -right-4 group-hover:text-brand-primary/10 transition-colors">{s.step}</div>
+              <h3 className="text-2xl font-display font-bold mb-4 tracking-tight text-white relative z-10">{s.title}</h3>
+              <p className="text-gray-400 leading-relaxed relative z-10">{s.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </section>
 

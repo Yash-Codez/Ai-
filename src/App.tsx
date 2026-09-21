@@ -24,7 +24,7 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => {
 export default function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-bg-dark text-white selection:bg-brand-primary/30 overflow-x-hidden">
+      <div className="min-h-screen bg-bg-dark text-white selection:bg-brand-primary/30 overflow-clip">
         <Scene3D />
         <Navbar />
         <main className="relative z-10">
