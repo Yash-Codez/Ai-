@@ -7,13 +7,10 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   
   return (
-    <nav className="fixed top-0 w-full z-[100] border-b border-white/5 bg-bg-dark/80 backdrop-blur-md">
+    <nav className="absolute top-0 w-full z-[100] border-b border-white/5 bg-bg-dark/80 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 z-[110]">
-          <div className="w-8 h-8 bg-brand-primary rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(0,255,255,0.4)]">
-            <Cpu className="w-5 h-5 text-black" />
-          </div>
-          <span className="font-display font-bold text-xl tracking-tight text-white">AI Innovator7</span>
+          <img src="/logo.png" alt="AI Innovator7 Logo" className="h-16 w-auto object-contain rounded-md" />
         </Link>
         
         {/* Desktop Links */}

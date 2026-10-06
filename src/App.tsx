@@ -9,6 +9,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Scene3D from "./components/Scene3D";
 import ChatbotConcierge from "./components/ChatbotConcierge";
+import AiEmployees from "./pages/AiEmployees";
 
 const PageWrapper = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
@@ -35,6 +36,7 @@ export default function App() {
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/ai-employees" element={<AiEmployees />} />
             </Routes>
           </PageWrapper>
         </main>

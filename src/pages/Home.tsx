@@ -195,6 +195,61 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Digital Marketing Services */}
+      <section className="py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">Comprehensive <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-purple-500">Digital Marketing</span></h2>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">Measurable results across industries: organic traffic, AI chatbots, sales, and brand visibility.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          {[
+            { title: "Content Marketing", desc: "Data-driven content strategies that rank and convert." },
+            { title: "Social Media Marketing", desc: "Building brand authority and engaging audiences." },
+            { title: "Performance Marketing", desc: "High-ROI campaigns across search and social channels." },
+            { title: "Design and Development", desc: "High-converting landing pages and digital experiences." }
+          ].map((s, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="glass-card p-8 rounded-3xl border-white/10 hover:border-brand-primary/30 transition-all flex justify-between items-center group cursor-pointer"
+            >
+              <div>
+                <h3 className="text-2xl font-display font-bold mb-2 tracking-tight text-white">{s.title}</h3>
+                <p className="text-gray-400 leading-relaxed text-sm">{s.desc}</p>
+              </div>
+              <ChevronRight className="w-6 h-6 text-gray-500 group-hover:text-brand-primary transition-colors" />
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="text-center mb-12">
+          <h3 className="text-2xl font-display font-bold text-white mb-8">Governance in AI, Growth and Digital Marketing</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { title: "Acquisition & Funnel Optimization", desc: "Streamline the customer journey from first click to final conversion using intelligent routing." },
+              { title: "Brand Relevance & User Trust", desc: "Maintain a consistent, authoritative voice across all channels powered by AI moderation." },
+              { title: "End-to-end Data Management", desc: "Securely capture, store, and leverage zero-party data to personalize the user experience." }
+            ].map((s, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.2 }}
+                className="bg-[#0f1c16] border border-[#1a3326] p-8 rounded-3xl text-left hover:border-[#25D366]/30 transition-all"
+              >
+                <h4 className="text-lg font-bold text-white mb-3">{s.title}</h4>
+                <p className="text-gray-400 text-sm leading-relaxed">{s.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Portfolio Preview */}
       <section className="py-24 px-6 max-w-7xl mx-auto">
         <div className="text-center mb-16">
