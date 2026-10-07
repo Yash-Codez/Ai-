@@ -137,17 +137,19 @@ const Home = () => {
       </section>
 
       {/* Trust Metrics */}
-      <section className="py-24 border-y border-white/5 bg-white/[0.01]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 text-center">
+      <section className="py-24 border-y border-white/5 bg-[#0C1510]">
+        <div className="max-w-7xl mx-auto px-6 text-left">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 text-left">
             {[
-              { label: "Client Revenue Generated", value: "$10M+" },
-              { label: "Hours Saved Weekly", value: "40,000+" },
-              { label: "Enterprise Clients", value: "150+" }
+              { label: "Users Across Deployments ↗", value: "1,000+", valueColor: "text-[#E8F2EC]" },
+              { label: "Production Systems Shipped", value: "17+", valueColor: "text-[#E8F2EC]" },
+              { label: "To a Live Standard Six Deployment", value: <><span className="text-[#F2A43A]">2</span> <span className="text-[#F2A43A]">weeks.</span></> }
             ].map((stat, i) => (
               <FadeUpReveal key={i} delay={i * 0.2}>
-                <h3 className="text-6xl font-display font-bold text-white mb-3 tracking-tighter">{stat.value}</h3>
-                <p className="text-gray-500 font-bold uppercase tracking-widest text-sm">{stat.label}</p>
+                <h3 className={`text-7xl font-mono font-bold mb-4 tracking-tighter ${stat.valueColor || ''}`}>
+                  {stat.value}
+                </h3>
+                <p className="text-[#8B9D93] font-mono font-medium uppercase tracking-widest text-sm">{stat.label}</p>
               </FadeUpReveal>
             ))}
           </div>
