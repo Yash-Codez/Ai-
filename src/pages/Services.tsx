@@ -1,114 +1,130 @@
 import { motion } from "motion/react";
-import { Search, Code2, Users, ArrowRight } from "lucide-react";
+import { ChevronRight, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Services = () => {
-  const steps = [
-    {
-      id: "01",
-      title: "Identify",
-      icon: <Search className="w-10 h-10" />,
-      subtitle: "Finding the 5% that matters.",
-      desc: "Every project starts with clarity. We start by understanding how your team actually works - where time is being lost, what slows things down, and why work piles up. From there, we find the opportunities worth building.",
-      features: ["Workflow Audits", "Bottleneck Analysis", "Feasibility Studies", "ROI Projections"]
-    },
-    {
-      id: "02",
-      title: "Develop",
-      icon: <Code2 className="w-10 h-10" />,
-      subtitle: "Building the right way.",
-      desc: "Once we know what matters, we move quickly and get to the building. Our team plans and develops solutions that fit seamlessly into your existing systems - built the right way, so they work exactly as they should from day one.",
-      features: ["Custom LLM Fine-tuning", "Agentic Workflows", "CRM Integrations", "Secure Data Pipelines"]
-    },
-    {
-      id: "03",
-      title: "Adopt",
-      icon: <Users className="w-10 h-10" />,
-      subtitle: "Making it stick.",
-      desc: "Then we make it real. We work side by side with your teams - training, fine-tuning, and helping them integrate your new systems into their everyday work. By the time we step back, it's not a project anymore - it's just how work gets done.",
-      features: ["Team Training", "Performance Monitoring", "Iterative Refinements", "24/7 SLA Support"]
-    }
-  ];
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="pt-32 pb-24 px-6"
+      className="pt-32 pb-24 px-6 min-h-screen"
     >
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-32">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-8 tracking-tighter">
-              How We <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-purple-500">Work</span>
+            <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 tracking-tighter">
+              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-purple-500">Services</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-              We don't just sell software. We are workflow specialists first, AI specialists second. Here is how we transform your business.
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+              We provide comprehensive digital solutions ranging from marketing to advanced AI automation and web development.
             </p>
           </motion.div>
         </div>
 
-        <div className="space-y-0 relative">
-          {steps.map((s, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8 }}
-              className="flex flex-col md:flex-row gap-12 md:gap-24 items-start relative min-h-[120vh] pt-32"
-            >
-              <div className={`w-full md:w-1/2 ${i % 2 === 0 ? 'md:order-last' : 'md:order-first'} sticky top-40 h-fit z-10 hidden md:flex justify-center`}>
-                <div className="relative w-full aspect-square max-w-md">
-                  <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/20 to-gray-500/20 rounded-full blur-3xl mix-blend-screen opacity-50"></div>
-                  <div className="absolute inset-4 glass-card rounded-[3rem] flex items-center justify-center border-white/10 overflow-hidden shadow-2xl">
-                    <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/10 to-transparent"></div>
-                    <div className="text-brand-primary scale-150 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-                      {s.icon}
-                    </div>
+        <div className="space-y-32">
+          {/* Digital Marketing */}
+          <section>
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">Comprehensive <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-purple-500">Digital Marketing</span></h2>
+              <p className="text-lg text-gray-400">Measurable results across industries: organic traffic, AI chatbots, sales, and brand visibility.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                { title: "Social Media Management", desc: "Create content that relates and ranks well." },
+                { title: "Local SEO Strategy", desc: "Attract local leads with precision." },
+                { title: "Google and Meta Ads", desc: "Data-driven ads that convert immediately." },
+                { title: "Analytics & Reporting", desc: "Measure success with detailed insights." }
+              ].map((s, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="glass-card p-6 rounded-2xl border-white/10 hover:border-brand-primary/30 transition-all flex justify-between items-center group cursor-pointer"
+                >
+                  <div>
+                    <h3 className="text-lg font-display font-bold mb-1 tracking-tight text-white">{s.title}</h3>
+                    <p className="text-gray-400 leading-relaxed text-sm">{s.desc}</p>
                   </div>
-                </div>
-              </div>
-              
-              <div className={`w-full md:w-1/2 ${i % 2 === 0 ? 'md:order-first' : 'md:order-last'} pb-32`}>
-                <div className="md:hidden relative w-full aspect-square max-w-xs mx-auto mb-12">
-                  <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/20 to-gray-500/20 rounded-full blur-3xl mix-blend-screen opacity-50"></div>
-                  <div className="absolute inset-4 glass-card rounded-3xl flex items-center justify-center border-white/10 overflow-hidden shadow-2xl">
-                    <div className="text-brand-primary scale-125 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-                      {s.icon}
-                    </div>
-                  </div>
-                </div>
+                  <ChevronRight className="w-5 h-5 text-gray-500 group-hover:text-brand-primary transition-colors" />
+                </motion.div>
+              ))}
+            </div>
+          </section>
 
-                <div className="inline-flex items-center gap-4 text-brand-primary font-bold tracking-widest uppercase mb-6">
-                  <span className="text-sm bg-brand-primary/10 px-4 py-1 rounded-full border border-brand-primary/20 text-white">Step {s.id}</span>
-                  {s.subtitle}
-                </div>
-                <h2 className="text-5xl md:text-6xl font-display font-bold mb-8 text-white tracking-tight leading-tight">{s.title}</h2>
-                <p className="text-xl md:text-2xl text-gray-400 leading-relaxed mb-12">{s.desc}</p>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {s.features.map((f, j) => (
-                    <div key={j} className="flex items-center gap-4 text-gray-300 font-medium bg-white/5 px-6 py-5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
-                      <div className="w-2 h-2 rounded-full bg-brand-primary shadow-[0_0_10px_rgba(255,255,255,0.8)]"></div>
-                      <span className="text-lg">{f}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
+          {/* Website Development */}
+          <section>
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">High-Performance <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-purple-500">Website Development</span></h2>
+              <p className="text-lg text-gray-400">Stunning, lightning-fast digital experiences tailored to your business needs.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                { title: "Custom Web Apps", desc: "Tailored applications for your unique business needs." },
+                { title: "Responsive UI/UX", desc: "Beautiful interfaces that work flawlessly on any device." },
+                { title: "E-commerce Platforms", desc: "Scalable stores designed to maximize conversions." },
+                { title: "CMS Integration", desc: "Easy-to-manage content systems for your team." }
+              ].map((s, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="glass-card p-6 rounded-2xl border-white/10 hover:border-brand-primary/30 transition-all flex justify-between items-center group cursor-pointer"
+                >
+                  <div>
+                    <h3 className="text-lg font-display font-bold mb-1 tracking-tight text-white">{s.title}</h3>
+                    <p className="text-gray-400 leading-relaxed text-sm">{s.desc}</p>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-gray-500 group-hover:text-brand-primary transition-colors" />
+                </motion.div>
+              ))}
+            </div>
+          </section>
+
+          {/* AI Employees */}
+          <section>
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">Autonomous <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-purple-500">AI Employees</span></h2>
+              <p className="text-lg text-gray-400">Deploy intelligent, autonomous AI agents tailored to specific roles within your business.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                { title: "Custom AI Voice Assistants", desc: "Deliver conversational voice support for seamless customer service." },
+                { title: "Custom AI Agents", desc: "Automate tasks, analyze data, and build efficient workflows." },
+                { title: "AI CRM Integrations", desc: "Optimize processes, personalize outreach, and streamline operations." },
+                { title: "Role-Specific Agents", desc: "Pre-trained agents for specific business functions like SDRs." }
+              ].map((s, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="bg-[#0C1510] border border-[#1a3326] p-6 rounded-2xl text-left hover:border-brand-primary/30 transition-all flex justify-between items-center group cursor-pointer"
+                >
+                  <div>
+                    <h3 className="text-lg font-display font-bold mb-1 tracking-tight text-white">{s.title}</h3>
+                    <p className="text-gray-400 leading-relaxed text-sm">{s.desc}</p>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-gray-500 group-hover:text-brand-primary transition-colors" />
+                </motion.div>
+              ))}
+            </div>
+          </section>
         </div>
         
-        <div className="mt-40 text-center">
-          <h2 className="text-4xl font-display font-bold mb-8">Ready for the 5% that matters?</h2>
-          <Link to="/contact" className="inline-flex items-center gap-3 bg-brand-primary text-black px-10 py-5 rounded-full text-xl font-black hover:bg-white transition-all shadow-[0_0_40px_rgba(0,255,255,0.3)]">
-            Start Your Audit <ArrowRight className="w-6 h-6" />
+        <div className="mt-32 text-center">
+          <h2 className="text-3xl font-display font-bold mb-8">Ready to transform your business?</h2>
+          <Link to="/contact" className="inline-flex items-center gap-3 bg-brand-primary text-black px-10 py-4 rounded-full text-lg font-black hover:bg-white transition-all shadow-[0_0_30px_rgba(0,255,255,0.3)]">
+            Start a Conversation <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
       </div>
